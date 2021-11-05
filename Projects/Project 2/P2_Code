@@ -2,6 +2,8 @@
 #Project 2
 #Asher Hausam
 
+print("---PROJECT START---")
+
 sum = 0
 
 seed1 = 1
@@ -18,3 +20,5 @@ while True:
     sum += number
 
 print("SUM:" + str(sum))
+
+input("---PROJECT END---")
