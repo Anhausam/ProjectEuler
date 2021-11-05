@@ -4,6 +4,51 @@
 
 print("---PROJECT START---")
 
+num1=999
+num2=999
+number = num1*num2
+palindrome = False
+highestPalindrome = 0
+highestPalindromFactors = ""
+palindromesSinceLastHighest = 0
 
-print("ANS:")
+while(palindrome == False):
+	if(palindromesSinceLastHighest > 10):
+		palindrome = True
+	number = num1 * num2
+	for letterPos in range(0, len(str(number))):
+		number = str(number)
+		
+		print(str(num1) + "x" + str(num2) + "=" + number)
+		
+		if(number[letterPos] == number[len(number)-(1+letterPos)]):
+			print("POSSIBILITY:" + number)
+		else:
+			if((num1 > 99) and (num2 > 99)):
+				num2 -= 1
+			elif((num1 > 99) and (num2 <= 99)):
+				num2 = 999
+				num1 -= 1
+			elif(num1 <= 99):
+				palindrome = True
+			palindrome = False
+		
+			break
+
+		if(letterPos == (len(number) - 1)):
+			if(int(number) > int(highestPalindrome)):
+				highestPalindrome = int(number)
+				highestPalindromFactors = str(num1) + " x " + str(num2)
+				palindromesSinceLastHighest = 0
+			else:
+				palindromesSinceLastHighest += 1
+				if((num1 > 99) and (num2 > 99)):
+					num2 -= 1
+				elif((num1 > 99) and (num2 <= 99)):
+					num2 = 999
+					num1 -= 1
+				elif(num1 <= 99):
+					palindrome = True
+
+print("ANS:" + highestPalindromFactors + " = " + str(highestPalindrome))
 print("---PROJECT END---")
