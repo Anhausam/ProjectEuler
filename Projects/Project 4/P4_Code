@@ -4,51 +4,32 @@
 
 print("---PROJECT START---")
 
-num1=999
-num2=999
-number = num1*num2
-palindrome = False
-highestPalindrome = 0
-highestPalindromFactors = ""
-palindromesSinceLastHighest = 0
+num1 = 999
+num2 = 999
+product = num1 * num2
+palindrome = 0
 
-while(palindrome == False):
-	if(palindromesSinceLastHighest > 10):
-		palindrome = True
-	number = num1 * num2
-	for letterPos in range(0, len(str(number))):
-		number = str(number)
-		
-		print(str(num1) + "x" + str(num2) + "=" + number)
-		
-		if(number[letterPos] == number[len(number)-(1+letterPos)]):
-			print("POSSIBILITY:" + number)
-		else:
-			if((num1 > 99) and (num2 > 99)):
-				num2 -= 1
-			elif((num1 > 99) and (num2 <= 99)):
-				num2 = 999
-				num1 -= 1
-			elif(num1 <= 99):
-				palindrome = True
-			palindrome = False
-		
-			break
-
-		if(letterPos == (len(number) - 1)):
-			if(int(number) > int(highestPalindrome)):
-				highestPalindrome = int(number)
-				highestPalindromFactors = str(num1) + " x " + str(num2)
-				palindromesSinceLastHighest = 0
+for generation in range(product, 0, -1):
+	product = num1 * num2
+	print(str(num1) + "x" + str(num2) + "=" + str(product))
+	
+	if(int(product) > int(palindrome)):
+		product = str(product)
+		for letterPos in range(0, len(product)):
+			if (product[letterPos] == product[len(product) - (1+letterPos)]):
+				if(letterPos == (len(product) - 1)):
+					palindrome = int(product)
 			else:
-				palindromesSinceLastHighest += 1
-				if((num1 > 99) and (num2 > 99)):
-					num2 -= 1
-				elif((num1 > 99) and (num2 <= 99)):
-					num2 = 999
-					num1 -= 1
-				elif(num1 <= 99):
-					palindrome = True
+				break
 
-print("ANS:" + highestPalindromFactors + " = " + str(highestPalindrome))
+	if(num2 > 100):
+		num2 -= 1
+	elif(num2 == 100):
+		num1 -=1
+		num2 = 999
+
+	if((int(num1) * 999) < int(palindrome)):
+		break
+
+print("ANS:" + "x" + "="" + str(palindrome))
 print("---PROJECT END---")
