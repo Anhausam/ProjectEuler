@@ -2,5 +2,22 @@
 #Project 7
 #Asher Hausam
 
+primesFound = 6
+num = 13
+
 print("---PROGRAM START---")
+
+while (primesFound < 10001):
+	num += 2
+	print(num)
+	for divisor in range(2,(int(num/2) + 1)):
+		if(num % divisor == 0):
+			print(divisor)
+			break
+		elif(divisor == int(num/2)):
+			print("PRIME:" + str(num))
+			primesFound += 1
+
+
+print("ANS:"+str(num))
 print("---PROGRAM END---")
